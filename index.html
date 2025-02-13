@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>buy cripto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header id="header">
+    
+    <img src="https://cdni.iconscout.com/illustration/premium/thumb/crypto-trading-illustration-download-in-svg-png-gif-file-formats--bitcoin-logo-cryptocurrency-mobile-app-investment-business-activity-pack-illustrations-3551718.png?f=webp" alt="logo" id="header-img" width="50">
+    <h1>We buy your crypto</h1>
+    <nav id="nav-bar">
+      <a href="#best-offer" class="nav-link">offer</a>
+      <a href="#available-coins" class="nav-link">coins</a>
+      <a href="#instructions" class="nav-link">instructions</a>
+    </nav>
+  </header>
+  <div class="spacer"></div>
+  <main class="sections">
+    <section id="best-offer">
+      <h3>Get the best offer</h3>
+      <form id="form" action="https://formsubmit.co/bondaritto@gmail.com" method="post">
+        <input type="email" name="email" id="email" placeholder="Enter your email address">
+        <input id="submit" type="submit" value="send 🚀" >
+      </form>
+    </section>
+    <section id="available-coins">
+<h3>Available coins</h3>
+<div class="wrap-coins">      
+<article class="coin">
+  <h4>Bitcoin</h4>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/2048px-Bitcoin.svg.png" alt="" class="img-coin">
+  <p class="description" id="btc-price">Cargando...</p>
+  <input type="button" value="sell">
+</article>
+<article class="coin">
+  <h4>Ethereum</h4>
+  <img src="https://svgmix.com/uploads/3287b3-ethereum-eth.svg" alt="" class="img-coin">
+  <p class="description" id="eth-price">Cargando...</p>
+  <input type="button" value="sell">
+</article>
+<article class="coin">
+  <h4>Solana</h4>
+  <img src="https://cdn-icons-png.flaticon.com/512/6001/6001527.png" alt="" class="img-coin">
+  <p id="sol-price" class="description">Cargando...</p>
+  <input type="button" value="sell">
+</article>
+<article class="coin">
+  <h4>XRP</h4>
+  <img src="https://www.svgrepo.com/show/428647/ripple-xrp-cryptocurrency-3.svg" alt="" class="img-coin">
+  <p id="xrp-price" class="description">Cargando....</p>
+  <input type="button" value="sell">
+</article>
+<article class="coin">
+  <h4>Doge</h4>
+  <img src="https://brandlogos.net/wp-content/uploads/2021/12/dogecoin-brandlogo.net_.png" alt="" class="img-coin">
+  <p id="doge-price" class="description">Cargando...</p>
+  <input type="button" value="sell">
+</article>
+<article class="coin">
+  <h4>Pepe</h4>
+  <img src="https://cryptologos.cc/logos/pepe-pepe-logo.png" alt="" class="img-coin">
+  <p id="pepe-price" class="description">Cargando...</p>
+  <input type="button" value="sell">
+</article>
+</div>
+    </section>
+    <section id="instructions">
+      <h3>Video instructions</h3>
+      <iframe id="video"  src="https://www.youtube.com/embed/0T_pdduDVQc?si=lpcO6ZLh6ou0maRk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>Created by <a href="#">Sergei Bondar</a></p>
+    <p>&#169; All rights very very reserved</p>
+  </footer>
+  <script>
+    async function fetchCryptoPrices() {
+        const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple,dogecoin,pepe&vs_currencies=usd';
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+  
+            document.getElementById('btc-price').innerText = `$${data.bitcoin.usd}`;
+            document.getElementById('eth-price').innerText = `$${data.ethereum.usd}`;
+            document.getElementById('sol-price').innerText = `$${data.solana.usd}`;
+            document.getElementById('xrp-price').innerText = `$${data.ripple.usd}`;
+            document.getElementById('doge-price').innerText = `$${data.dogecoin.usd}`;
+            document.getElementById('pepe-price').innerText = `$${data.pepe.usd}`;
+        } catch (error) {
+            console.error("Error obteniendo los precios:", error);
+        }
+    }
+  
+    fetchCryptoPrices();
+    setInterval(fetchCryptoPrices, 30000); // Actualiza cada 30 segundos
+  </script>
+</body>
+</html>
